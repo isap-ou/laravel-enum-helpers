@@ -1,0 +1,27 @@
+{
+  "name": "isap-ou/laravel-enum-helpers",
+  "description": "Adding some helpers functions to PHP8 native enums",
+  "type": "library",
+  "require": {
+    "illuminate/contracts": "^10|^11"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "IsapOu\\EnumHelpers\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "ISAP OU",
+      "email": "contact@isap.me"
+    }
+  ],
+  "extra": {
+    "laravel": {
+      "providers": [
+        "IsapOu\\EnumHelpers\\ServiceProvider"
+      ]
+    }
+  }
+}
