@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace IsapOu\EnumHelpers;
 
@@ -39,14 +39,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             ]);
         }
 
-        if (! $this->app->runningUnitTests() && $this->app['config']->get('enum-helpers.post_migrate', [])) {
-            $this->app['events']->listen(MigrationsEnded::class, function () {
-                foreach ($this->app['config']->get('enum-helpers.post_migrate', []) as $command) {
-                    Artisan::call($command);
-                }
-            });
+        if (! $this->app->runningUnitTests() && $this->app['config']->get('enum-helpers.post_migrate', true)) {
+            $this->app['events']->listen(MigrationsEnded::class, fn () => Artisan::call(MigrateEnumsCommand::class));
         }
 
-        AboutCommand::add('Laravel enum Helpers', fn () => ['Version' => '1.0.0']);
+        AboutCommand::add('Laravel enum Helpers', static fn () => ['Version' => '1.0.0']);
     }
 }

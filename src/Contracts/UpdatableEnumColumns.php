@@ -17,5 +17,5 @@ interface UpdatableEnumColumns
      *
      * @return array<string, string> Array where the key is the table name and the value is the column name.
      */
-    public static function table(): array;
+    public static function tables(): array;
 }

@@ -1,6 +1,6 @@
 {
   "name": "isap-ou/laravel-enum-helpers",
-  "description": "Adding some helpers functions to PHP8 native enums",
+  "description": "Adding some helpers functions to PHP8 native enums for laravel projects",
   "type": "library",
   "require": {
     "illuminate/contracts": "^10|^11"
