@@ -49,15 +49,12 @@ The way easy to add all enums to database column.
 
 Just add to Enum trait `InteractWithCollection`
 ```php
-<?php
-namespace App\Enums
-
 use IsapOu\EnumHelpers\Concerns\InteractWithCollection;
 
 enum ExampleEnum: string
 {
 
-    use InteractWithCollection
+    use InteractWithCollection;
 
     case ENUM_ONE = 'enum_one';
     case ENUM_TWO = 'enum_two';
@@ -67,7 +64,6 @@ enum ExampleEnum: string
 And in migration class
 
 ```php
-<?php
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -95,10 +91,6 @@ Artisan command allows update available(possible) values for specific enum colum
 Modify enum:
 
 ```php
-<?php
-
-namespace App\Enums
-
 use IsapOu\EnumHelpers\Contracts\UpdatableEnumColumns;
 
 enum ExampleEnum: string implements UpdatableEnumColumns
@@ -107,8 +99,6 @@ enum ExampleEnum: string implements UpdatableEnumColumns
     case ENUM_ONE = 'enum_one';
     case ENUM_TWO = 'enum_two';
     
-    ...
-    
     public static tables()
     {
         return [
@@ -116,7 +106,6 @@ enum ExampleEnum: string implements UpdatableEnumColumns
         ]
     }
 }
-
 ```
 
 And run command
@@ -148,19 +137,13 @@ Artisan command allows generate js objects based on enums
 Modify enum:
 
 ```php
-<?php
-
-namespace App\Enums
-
 use IsapOu\EnumHelpers\Contracts\UpdatableEnumColumns;
 
 enum ExampleEnum: string implements JsConvertibleEnum
 {
-
     case ENUM_ONE = 'enum_one';
     case ENUM_TWO = 'enum_two';
 }
-
 ```
 And run command
 
@@ -192,15 +175,11 @@ Label helper allows to transform an enum instance into a textual label.
 This is useful for displaying human-readable translatable enum values in your UI.
 
 ```php
-<?php
-
-namespace App\Enums
-
 use IsapOu\EnumHelpers\Concerns\HasLabel;
 
 enum ExampleEnum: string
 {
-    use HasLabel
+    use HasLabel;
 
     case ENUM_ONE = 'enum_one';
     case ENUM_TWO = 'enum_two';
@@ -224,20 +203,15 @@ Method `getLabel` has two optional parameters:
 There is possibility to define `prefix` and `namespace` globally via `enum-helpers.config` or on enum level via methods 
 
 ```php
-...
-
 protected function getPrefix(): ?string
 {
     return 'prefix';
 }
 
-...
-
 protected function getNamespace(): ?string
 {
     return 'namespace';
 }
-...
 ```
 
 > Option. Can be added interface `\IsapOu\EnumHelperes\Contracts\HasLabel` that can solve ide autocomplete and tips
@@ -250,7 +224,7 @@ use Filament\Support\Contracts\HasLabel;
 
 enum ExampleEnum: string implements HasLabel
 {
-    use HasLabel
+    use HasLabel;
 
     case ENUM_ONE = 'enum_one';
     case ENUM_TWO = 'enum_two';
