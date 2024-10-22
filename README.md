@@ -216,7 +216,7 @@ protected function getNamespace(): ?string
 
 > **Optional**. Can be added interface `\IsapOu\EnumHelpers\Contracts\HasLabel` that can solve ide autocomplete and tips
 
-This helper compatible with Enums in [FilamentPHP](https://filamentphp.com/docs/3.x/support/enums)
+This helper compatible with [Enums in FilamentPHP](https://filamentphp.com/docs/3.x/support/enums)
 
 ```php
 
@@ -234,7 +234,10 @@ enum ExampleEnum: string implements HasLabel
 ## Contributing
 
 Please, submit bugs or feature requests via the [Github issues](https://github.com/isap-ou/laravel-enum-helpers/issues).
-Pull requests are welcomed! Thanks!
+
+Pull requests are welcomed!
+
+Thanks!
 
 ## License
 
