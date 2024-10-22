@@ -47,6 +47,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             });
         }
 
-        AboutCommand::add('Laravel enum hHelperss', fn () => ['Version' => '1.0.0']);
+        AboutCommand::add('Laravel enum Helpers', fn () => ['Version' => '1.0.0']);
     }
 }
