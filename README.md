@@ -214,7 +214,7 @@ protected function getNamespace(): ?string
 }
 ```
 
-> Option. Can be added interface `\IsapOu\EnumHelperes\Contracts\HasLabel` that can solve ide autocomplete and tips
+> **Optional**. Can be added interface `\IsapOu\EnumHelpers\Contracts\HasLabel` that can solve ide autocomplete and tips
 
 This helper compatible with Enums in [FilamentPHP](https://filamentphp.com/docs/3.x/support/enums)
 
