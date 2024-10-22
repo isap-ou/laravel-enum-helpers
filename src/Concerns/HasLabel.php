@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace IsapOu\EnumHelpers\Concerns;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
 
-use function get_class;
 use function rtrim;
 use function trans;
 
@@ -27,7 +28,7 @@ trait HasLabel
             $namespace .= '::';
         }
 
-        return trans(vsprintf('%s%s%s.%s', [$namespace, $prefix, get_class($this), $this->name]));
+        return trans(vsprintf('%s%s%s.%s', [$namespace, $prefix, \get_class($this), $this->name]));
     }
 
     protected function getPrefix(): ?string

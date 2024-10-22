@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace IsapOu\EnumHelpers\Concerns;
 
 use Illuminate\Support\Collection;
