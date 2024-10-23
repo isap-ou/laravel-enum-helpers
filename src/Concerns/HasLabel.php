@@ -37,7 +37,7 @@ trait HasLabel
 
     public function getLabels(?string $prefix = null, ?string $namespace = null): Collection
     {
-        return static::collection()->mapWithKeys(fn ($enum) => [$enum->name => $enum->getLabel($prefix, $namespace)]);
+        return Collection::make(static::cases())->mapWithKeys(fn ($enum) => [$enum->name => $enum->getLabel($prefix, $namespace)]);
     }
 
     protected function getPrefix(): ?string
