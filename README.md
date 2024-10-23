@@ -169,10 +169,10 @@ return [
 ]
 ```
 
-### Label helper
+### Label Helper
 
-Label helper allows to transform an enum instance into a textual label. 
-This is useful for displaying human-readable translatable enum values in your UI.
+The Label helper allows you to transform an enum instance into a textual label, 
+making it useful for displaying human-readable, translatable enum values in your UI.
 
 ```php
 use IsapOu\EnumHelpers\Concerns\HasLabel;
@@ -186,21 +186,56 @@ enum ExampleEnum: string
 }
 ```
 
-and get textual label 
+You can retrieve a textual label for an enum case using the getLabel method:
 
 ```php
 ExampleEnum::ENUM_ONE->getLabel()
 ```
 
-By default it will try to find translation with key e.g. `ExampleEnum.ENUM_ONE`
-1. `ExampleEnum` - class name
-2. `ENUM_ONE` - enum item name
+By default, the getLabel method attempts to find a translation key, following this format: `ExampleEnum.ENUM_ONE`.
+    1.	`ExampleEnum` - The class name of the enum.
+    2.	`ENUM_ONE` - The enum case name.
 
-Method `getLabel` has two optional parameters:
-1. `prefix` - Allows prepend prefix for translation key
-2. `namespace` - Allows to prepend namespace. Suitable during own package development
+#### Parameters
 
-There is possibility to define `prefix` and `namespace` globally via `enum-helpers.config` or on enum level via methods 
+The getLabel method accepts three optional parameters:
+	1.	`prefix`: Prepends a prefix to the translation key.
+	2.	`namespace`: Prepends a namespace to the translation key. This is particularly useful when developing packages.
+	3.	`locale`: Allows you to specify the locale for translation. If not provided, the app’s default locale will be used.
+
+##### Example with custom parameters:
+```php
+ExampleEnum::ENUM_ONE->getLabel('custom_prefix', 'custom_namespace', 'fr');
+```
+This will retrieve the French (fr) translation with the specified prefix and namespace.
+
+#### getLabels Method
+
+The getLabels method returns a collection of labels for all enum cases, 
+making it convenient to retrieve or display translatable labels for multiple enum values at once.
+
+```php
+$labels = ExampleEnum::getLabels();
+
+// Output:
+// Illuminate\Support\Collection {#1234
+//     all: [
+//         "ENUM_ONE" => "Enum One Label",
+//         "ENUM_TWO" => "Enum Two Label",
+//     ],
+// }
+```
+
+##### Customizing Prefix, Namespace, and Locale
+
+You can customize the prefix, namespace, and locale for the translations when retrieving labels for all cases:
+```php
+$customLabels = ExampleEnum::getLabels('custom_prefix', 'custom_namespace', 'fr');
+```
+
+#### Global Configuration for Prefix and Namespace
+You can define the `prefix` and `namespace` globally in the configuration file `enum-helpers.config`, 
+or override them on the enum level by defining the following methods:
 
 ```php
 protected function getPrefix(): ?string
@@ -214,9 +249,15 @@ protected function getNamespace(): ?string
 }
 ```
 
-> **Optional**. Can be added interface `\IsapOu\EnumHelpers\Contracts\HasLabel` that can solve ide autocomplete and tips
+The global or per-enum configurations will be used unless you provide custom values when calling getLabel or getLabels.
 
-This helper compatible with [Enums in FilamentPHP](https://filamentphp.com/docs/3.x/support/enums)
+> **Optional**. Interface `\IsapOu\EnumHelpers\Contracts\HasLabel` for better IDE support
+
+For better IDE support, you can implement the \IsapOu\EnumHelpers\Contracts\HasLabel interface. 
+This helps provide autocomplete suggestions and improves code hinting for the getLabel method when working with enums.
+
+##### FilamentPHP Compatibility
+This helper is fully compatible with [Enums in FilamentPHP](https://filamentphp.com/docs/3.x/support/enums)
 
 ```php
 
