@@ -49,7 +49,7 @@ class MigrateEnumsCommand extends Command
                 }
 
                 $options = collect($class::cases())->pluck('value')->implode("','");
-                foreach ($class::table() as $table => $column) {
+                foreach ($class::tables() as $table => $column) {
                     if (! Schema::hasTable($table) || ! Schema::hasColumn($table, $column)) {
                         continue;
                     }
