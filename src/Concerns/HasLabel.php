@@ -14,7 +14,7 @@ use function trans;
 
 trait HasLabel
 {
-    public function getLabel(?string $prefix = null, ?string $namespace = null, ?$locale = null): string
+    public function getLabel(?string $prefix = null, ?string $namespace = null, ?string $locale = null): string
     {
         if (empty($prefix)) {
             $prefix = $this->getPrefix();
@@ -35,7 +35,7 @@ trait HasLabel
         return trans(key: vsprintf('%s%s%s.%s', [$namespace, $prefix, $reflect->getShortName(), $this->name]), locale: $locale);
     }
 
-    public function getLabels(?string $prefix = null, ?string $namespace = null, ?$locale = null): Collection
+    public function getLabels(?string $prefix = null, ?string $namespace = null, ?string $locale = null): Collection
     {
         return Collection::make(static::cases())->mapWithKeys(fn ($enum) => [$enum->name => $enum->getLabel($prefix, $namespace, $locale)]);
     }
