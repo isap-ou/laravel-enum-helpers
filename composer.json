@@ -3,7 +3,7 @@
   "description": "Adding some helpers functions to PHP8 native enums for laravel projects",
   "type": "library",
   "require": {
-    "illuminate/contracts": "^10|^11"
+    "illuminate/contracts": "^9|^10|^11"
   },
   "license": "MIT",
   "autoload": {
