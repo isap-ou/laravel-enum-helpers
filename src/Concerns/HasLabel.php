@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace IsapOu\EnumHelpers\Concerns;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
+use ReflectionClass;
 
 use function rtrim;
 use function trans;
@@ -28,7 +30,14 @@ trait HasLabel
             $namespace .= '::';
         }
 
-        return trans(vsprintf('%s%s%s.%s', [$namespace, $prefix, \get_class($this), $this->name]));
+        $reflect = new ReflectionClass($this);
+
+        return trans(vsprintf('%s%s%s.%s', [$namespace, $prefix, $reflect->getShortName(), $this->name]));
+    }
+
+    public function getLabels(?string $prefix = null, ?string $namespace = null): Collection
+    {
+        return Collection::make(static::cases())->mapWithKeys(fn ($enum) => [$enum->name => $enum->getLabel($prefix, $namespace)]);
     }
 
     protected function getPrefix(): ?string
