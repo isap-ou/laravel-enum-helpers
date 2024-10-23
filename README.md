@@ -99,11 +99,11 @@ enum ExampleEnum: string implements UpdatableEnumColumns
     case ENUM_ONE = 'enum_one';
     case ENUM_TWO = 'enum_two';
     
-    public static tables()
+    public static function tables(): array
     {
         return [
             'table_name' => 'enum_column'
-        ]
+        ];
     }
 }
 ```
