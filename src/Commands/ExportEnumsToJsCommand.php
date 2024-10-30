@@ -60,7 +60,7 @@ class ExportEnumsToJsCommand extends Command
         }
 
         if (! empty($jsString)) {
-            File::put(base_path(Config::get('js_objects_file')), trim($jsString));
+            File::put(base_path(Config::get('enum-helpers.js_objects_file')), trim($jsString));
         }
 
         return 0;
