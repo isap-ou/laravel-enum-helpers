@@ -12,7 +12,7 @@ return [
     ],
 
     'label' => [
-        'prefix' => null,
+        'prefix' => 'enums',
         'namespace' => null,
     ],
 
