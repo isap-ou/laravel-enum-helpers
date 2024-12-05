@@ -30,7 +30,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../config/config.php' => config_path('enum-helpers.php'),
-        ], 'config');
+        ], 'enum-helpers-config');
 
         if ($this->app->runningInConsole()) {
             $this->commands([

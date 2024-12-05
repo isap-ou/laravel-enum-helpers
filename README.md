@@ -14,7 +14,7 @@ composer require isap-ou/laravel-enum-helpers
 You will most likely need to edit the extensive configuration, so you can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="enum-helpers"
+php artisan vendor:publish --tag="enum-helpers-config"
 ```
 
 Default config
