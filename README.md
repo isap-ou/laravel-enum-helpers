@@ -2,6 +2,10 @@
 
 This package brings some helpers to native [PHP Enums](https://www.php.net/manual/en/language.enumerations.basics.php)
 
+![Laravel Enum Helpers](https://github.com/isap-ou/laravel-enum-helpers/blob/main/images/banner.jpg?raw=true)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/isap-ou/laravel-enum-helpers.svg?style=flat-square)](https://packagist.org/packages/isap-ou/laravel-enum-helpers)
+[![Total Downloads](https://img.shields.io/packagist/dt/isap-ou/laravel-enum-helpers.svg?style=flat-square)](https://packagist.org/packages/isap-ou/laravel-enum-helpers)
+
 
 ## Installation
 
@@ -282,6 +286,13 @@ Thanks!
 
 ## License
 
-The AgileCRM Client for Laravel is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+This project is open-sourced software licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+You are free to use, modify, and distribute it in your projects, as long as you comply with the terms of the license.
+
+---
+
+Maintained by [ISAPP](https://isapp.be) and [ISAP OÜ](https://isap.me).  
+Check out our software development services at [isap.me](https://isap.me).
 
 

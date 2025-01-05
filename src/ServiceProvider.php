@@ -43,6 +43,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             $this->app['events']->listen(MigrationsEnded::class, fn () => Artisan::call(MigrateEnumsCommand::class));
         }
 
-        AboutCommand::add('Laravel enum Helpers', static fn () => ['Version' => '1.0.0']);
+        AboutCommand::add('Laravel enum Helpers', static fn () => ['Version' => '1.3.4']);
     }
 }
