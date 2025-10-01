@@ -112,6 +112,27 @@ enum ExampleEnum: string implements UpdatableEnumColumns
 }
 ```
 
+Set column defaults (optional)
+
+You can instruct the migrator to set a **DEFAULT** for specific enum columns.
+If an enum class defines a static method `tableColumnDefaults()`, the command will append DEFAULT `<value>` to the generated SQL for the matching `table_column` keys.
+
+```php
+    /**
+     * Map "table_column" => enum case.
+     * The migrator will generate "... DEFAULT '<case->value>'".
+     *
+     * @return array<string, self>
+     */
+    public static function tableColumnDefaults(): array
+    {
+        return [
+            'orders_status'      => self::NEW,
+            'order_items_status' => self::NEW,
+        ];
+    }
+```
+
 And run command
 
 ```bash

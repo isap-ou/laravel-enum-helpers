@@ -54,6 +54,15 @@ class MigrateEnumsCommand extends Command
                         continue;
                     }
                     $rawSql = "ALTER TABLE {$table} MODIFY COLUMN {$column} ENUM('{$options}') ";
+                    
+                    if(method_exists($class, 'tableColumnDefaults')){
+                        $list = $class::tableColumnDefaults();
+                        $key = $table .'_'. $column;
+                        if(key_exists($key, $list)){
+                            $rawSql .= " DEFAULT '{$list[$key]->value}'";
+                        }
+                    }
+                    
                     DB::statement($rawSql);
                     $this->info(vsprintf('Enum column %s was updated in table %s.', [
                         $column,
