@@ -46,6 +46,24 @@ return [
 4. `label.prefix` - get default prefix for translations of enum fields
 5. `label.namespace` - get default prefix for translations of enum namespace (when using as part of own package)
 
+## Laravel Boost
+
+This package ships an [agent skill](https://laravel.com/docs/boost#agent-skills) for [Laravel Boost](https://github.com/laravel/boost).
+The skill teaches your AI agent how to use the helpers below.
+
+Boost offers the skill when `isap-ou/laravel-enum-helpers` is a direct dependency in your application's `composer.json`.
+Run the installer and select the package:
+
+```bash
+php artisan boost:install
+```
+
+If Boost is already installed, run the update command instead:
+
+```bash
+php artisan boost:update
+```
+
 ## Available helpers
 ### Migration helper
 
