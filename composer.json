@@ -1,6 +1,20 @@
 {
   "name": "isap-ou/laravel-enum-helpers",
-  "description": "Adding some helpers functions to PHP8 native enums for laravel projects",
+  "description": "Helpers for native PHP enums in Laravel: translatable labels, value collections for migrations, MySQL enum column sync, and export to JavaScript.",
+  "keywords": [
+    "laravel",
+    "enum",
+    "enums",
+    "php-enum",
+    "native-enum",
+    "enum-labels",
+    "enum-translation",
+    "migration",
+    "mysql-enum",
+    "javascript",
+    "filament",
+    "laravel-boost"
+  ],
   "type": "library",
   "require": {
     "illuminate/contracts": "^9|^10|^11|^12|^13"

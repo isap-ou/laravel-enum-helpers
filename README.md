@@ -1,6 +1,11 @@
 # Laravel Enum Helpers
 
-This package brings some helpers to native [PHP Enums](https://www.php.net/manual/en/language.enumerations.basics.php)
+Helpers for native [PHP enums](https://www.php.net/manual/en/language.enumerations.basics.php) in Laravel:
+
+- **Translatable labels** for enum cases, compatible with FilamentPHP.
+- **Value collections** for migrations and validation: `ExampleEnum::values()`, `ExampleEnum::keys()`.
+- **MySQL enum column sync**: one Artisan command updates `ENUM` columns when you add or remove a case.
+- **Export to JavaScript**: one Artisan command generates frozen JS objects from your enums.
 
 ![Laravel Enum Helpers](https://github.com/isap-ou/laravel-enum-helpers/blob/main/images/banner.jpg?raw=true)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/isap-ou/laravel-enum-helpers.svg?style=flat-square)](https://packagist.org/packages/isap-ou/laravel-enum-helpers)
@@ -30,7 +35,7 @@ return [
     ],
 
     'label' => [
-        'prefix' => null,
+        'prefix' => 'enums',
         'namespace' => null,
     ],
 
@@ -43,7 +48,7 @@ return [
 1. `enum_locations` - path where enums located. Key is directory with enums, value - namespace for specified directory
 2. `post_migrate` - enable or disable post migrate event listener
 3. `js_objects_file` - path for generated js output
-4. `label.prefix` - get default prefix for translations of enum fields
+4. `label.prefix` - get default prefix for translations of enum fields (default `enums`, so labels are read from `lang/{locale}/enums.php`)
 5. `label.namespace` - get default prefix for translations of enum namespace (when using as part of own package)
 
 ## Laravel Boost
@@ -180,7 +185,7 @@ Artisan command allows generate js objects based on enums
 Modify enum:
 
 ```php
-use IsapOu\EnumHelpers\Contracts\UpdatableEnumColumns;
+use IsapOu\EnumHelpers\Contracts\JsConvertibleEnum;
 
 enum ExampleEnum: string implements JsConvertibleEnum
 {
@@ -197,7 +202,7 @@ php artisan enum-helpers:js:export
 Output will
 
 ```js
-export const ExampleEnum = Object.freeze({ENUM_ONE: 'enum_one', ENUM_TWO: 'enum_two'})
+export const ExampleEnum = Object.freeze({ENUM_ONE:"enum_one", ENUM_TWO:"enum_two"});
 ```
 
 You can specify output path in config `enum-helpers.php`
@@ -305,10 +310,11 @@ This helper is fully compatible with [Enums in FilamentPHP](https://filamentphp.
 ```php
 
 use Filament\Support\Contracts\HasLabel;
+use IsapOu\EnumHelpers\Concerns\HasLabel as HasLabelTrait;
 
 enum ExampleEnum: string implements HasLabel
 {
-    use HasLabel;
+    use HasLabelTrait;
 
     case ENUM_ONE = 'enum_one';
     case ENUM_TWO = 'enum_two';
